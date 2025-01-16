@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>     // <string.h> is the C string library (not this)
-#include <person.h>
 using namespace std;  // Makes the std:: on stuff optional
 
 int main()
@@ -39,12 +38,4 @@ int main()
         std::cout << cpp_string << " comes after \"moo\"\n";
     c_string2 = cpp_string.c_str();     // Getting the underlying C string...so we can use all our
                                         //   c functions.
-
-    Person p;
-    //p.id = 42;                        // (broken for a bit)
-    //p.first_name = "Bob";
-    //p.calculate_pay();
-    Person q;
-    //q.id = 43;
-    //q.first_name = "Sally";
 }
