@@ -1,3 +1,4 @@
-This is a line
-x = 1024
-And we're done!
+100 Bob Jones 11.35724 24
+101 Sally Smith 15.95 48
+199 XXX YYY 1.1 99
+102 Greg Good 16.75 12
