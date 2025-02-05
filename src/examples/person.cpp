@@ -51,9 +51,10 @@ float example::Person::get_hourly_rate()
 }
 
 
-unsigned int example::Person::get_hours_worked()
+unsigned int get_hours_worked()
 {
-	return hours_worked;
+	//return hours_worked;
+	return 0;
 }
 
 

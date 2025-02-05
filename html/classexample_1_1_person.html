@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Ssu Data Structures (SSUDS): example::Person Class Reference</title>
+<title>SSUDS (SSU Data Structures): example::Person Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Ssu Data Structures (SSUDS)
+   <div id="projectname">SSUDS (SSU Data Structures)
    </div>
   </td>
  </tr>
@@ -77,12 +77,13 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classexample_1_1_person-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">example::Person Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This <a class="el" href="classexample_1_1_person.html" title="This Person class is an example of OOP techniques. Used for a couple projects (PersonDatabase) and as...">Person</a> class is an example of OOP techniques. Used for a couple projects (PersonDatabase) and as a test of a "complex" things (as opposed to int's, float's, strings)  
+<p>This is a simple class we'll use to explore basic C++ OOP (Object-Oriented Programming) concepts. It's not very useful in and of itself.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="person_8h_source.html">person.h</a>&gt;</code></p>
@@ -91,77 +92,223 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a13cef9dd175bcc612ae4fca575f91bc5" id="r_a13cef9dd175bcc612ae4fca575f91bc5"><td class="memItemLeft" align="right" valign="top"><a id="a13cef9dd175bcc612ae4fca575f91bc5" name="a13cef9dd175bcc612ae4fca575f91bc5"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Person</b> ()</td></tr>
-<tr class="memdesc:a13cef9dd175bcc612ae4fca575f91bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the DEFAULT CONSTRUCTOR (no parameters), sets id to -1 and names to ? <br /></td></tr>
+<tr class="memdesc:a13cef9dd175bcc612ae4fca575f91bc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The DEFAULT CONSTRUCTOR. <br /></td></tr>
 <tr class="separator:a13cef9dd175bcc612ae4fca575f91bc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af93a86f62bd01da12fe1b0a2bcf31a91" id="r_af93a86f62bd01da12fe1b0a2bcf31a91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af93a86f62bd01da12fe1b0a2bcf31a91">Person</a> (int start_id, std::string start_fname, std::string start_lname)</td></tr>
-<tr class="memdesc:af93a86f62bd01da12fe1b0a2bcf31a91"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the non-default constructor &ndash; mostly initializes all parameters based on arguments from the caller.  <br /></td></tr>
-<tr class="separator:af93a86f62bd01da12fe1b0a2bcf31a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1010e084e4a9eca4936cccbd6a9c9c05" id="r_a1010e084e4a9eca4936cccbd6a9c9c05"><td class="memItemLeft" align="right" valign="top"><a id="a1010e084e4a9eca4936cccbd6a9c9c05" name="a1010e084e4a9eca4936cccbd6a9c9c05"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>calculate_pay</b> ()</td></tr>
-<tr class="separator:a1010e084e4a9eca4936cccbd6a9c9c05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0ad10f90eecc3bf9222c67d0d3296b0" id="r_ad0ad10f90eecc3bf9222c67d0d3296b0"><td class="memItemLeft" align="right" valign="top"><a id="ad0ad10f90eecc3bf9222c67d0d3296b0" name="ad0ad10f90eecc3bf9222c67d0d3296b0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_hourly_rate</b> (float new_rate)</td></tr>
-<tr class="separator:ad0ad10f90eecc3bf9222c67d0d3296b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50c9a7f8826cd6da9bfca50ac66e5f79" id="r_a50c9a7f8826cd6da9bfca50ac66e5f79"><td class="memItemLeft" align="right" valign="top"><a id="a50c9a7f8826cd6da9bfca50ac66e5f79" name="a50c9a7f8826cd6da9bfca50ac66e5f79"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_hours_worked</b> (unsigned int new_hours)</td></tr>
-<tr class="separator:a50c9a7f8826cd6da9bfca50ac66e5f79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7fa0078276a5310e9fce342deaf4090" id="r_aa7fa0078276a5310e9fce342deaf4090"><td class="memItemLeft" align="right" valign="top"><a id="aa7fa0078276a5310e9fce342deaf4090" name="aa7fa0078276a5310e9fce342deaf4090"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_id</b> ()</td></tr>
-<tr class="separator:aa7fa0078276a5310e9fce342deaf4090"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acc7c6c1c1a81867676b7a9980e7a3dfa" id="r_acc7c6c1c1a81867676b7a9980e7a3dfa"><td class="memItemLeft" align="right" valign="top"><a id="acc7c6c1c1a81867676b7a9980e7a3dfa" name="acc7c6c1c1a81867676b7a9980e7a3dfa"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_first_name</b> ()</td></tr>
+<tr class="memitem:ab88de04d70f4615a3563ae51ea611af6" id="r_ab88de04d70f4615a3563ae51ea611af6"><td class="memItemLeft" align="right" valign="top"><a id="ab88de04d70f4615a3563ae51ea611af6" name="ab88de04d70f4615a3563ae51ea611af6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Person</b> ()</td></tr>
+<tr class="memdesc:ab88de04d70f4615a3563ae51ea611af6"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method isn't really necessary to define in this class since we have no cleanup to do. <br /></td></tr>
+<tr class="separator:ab88de04d70f4615a3563ae51ea611af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85cb13dd10859c1df85d72a4621c318c" id="r_a85cb13dd10859c1df85d72a4621c318c"><td class="memItemLeft" align="right" valign="top"><a id="a85cb13dd10859c1df85d72a4621c318c" name="a85cb13dd10859c1df85d72a4621c318c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Person</b> (std::string starting_fname, std::string starting_lname, unsigned int id, float starting_rate)</td></tr>
+<tr class="memdesc:a85cb13dd10859c1df85d72a4621c318c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a constructor that takes initial values for most of the attributes. <br /></td></tr>
+<tr class="separator:a85cb13dd10859c1df85d72a4621c318c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc7c6c1c1a81867676b7a9980e7a3dfa" id="r_acc7c6c1c1a81867676b7a9980e7a3dfa"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc7c6c1c1a81867676b7a9980e7a3dfa">get_first_name</a> ()</td></tr>
+<tr class="memdesc:acc7c6c1c1a81867676b7a9980e7a3dfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the first name of this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a> (an example of a GETTER)  <br /></td></tr>
 <tr class="separator:acc7c6c1c1a81867676b7a9980e7a3dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a0b466aa90d254ca9d4e78defc6ffb2" id="r_a5a0b466aa90d254ca9d4e78defc6ffb2"><td class="memItemLeft" align="right" valign="top"><a id="a5a0b466aa90d254ca9d4e78defc6ffb2" name="a5a0b466aa90d254ca9d4e78defc6ffb2"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>get_last_name</b> ()</td></tr>
+<tr class="memitem:a5a0b466aa90d254ca9d4e78defc6ffb2" id="r_a5a0b466aa90d254ca9d4e78defc6ffb2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a0b466aa90d254ca9d4e78defc6ffb2">get_last_name</a> ()</td></tr>
+<tr class="memdesc:a5a0b466aa90d254ca9d4e78defc6ffb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the last name of this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>.  <br /></td></tr>
 <tr class="separator:a5a0b466aa90d254ca9d4e78defc6ffb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f145ab5b49d1036439543a8a815b25b" id="r_a0f145ab5b49d1036439543a8a815b25b"><td class="memItemLeft" align="right" valign="top"><a id="a0f145ab5b49d1036439543a8a815b25b" name="a0f145ab5b49d1036439543a8a815b25b"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_hours_worked</b> ()</td></tr>
-<tr class="separator:a0f145ab5b49d1036439543a8a815b25b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a298e151e73341ed8fb58697fc292e0fb" id="r_a298e151e73341ed8fb58697fc292e0fb"><td class="memItemLeft" align="right" valign="top"><a id="a298e151e73341ed8fb58697fc292e0fb" name="a298e151e73341ed8fb58697fc292e0fb"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>get_hourly_rate</b> ()</td></tr>
-<tr class="separator:a298e151e73341ed8fb58697fc292e0fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413a460a163cd80afe72f1d38d2d8514" id="r_a413a460a163cd80afe72f1d38d2d8514"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a413a460a163cd80afe72f1d38d2d8514">get_id</a> ()</td></tr>
+<tr class="memdesc:a413a460a163cd80afe72f1d38d2d8514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the ID of this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>.  <br /></td></tr>
+<tr class="separator:a413a460a163cd80afe72f1d38d2d8514"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ce00cd0d975eae66c70a3602b461c3" id="r_a65ce00cd0d975eae66c70a3602b461c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65ce00cd0d975eae66c70a3602b461c3">get_hours_worked</a> ()</td></tr>
+<tr class="memdesc:a65ce00cd0d975eae66c70a3602b461c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the hours this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a> has worked this pay period.  <br /></td></tr>
+<tr class="separator:a65ce00cd0d975eae66c70a3602b461c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c79090eaeddab1ed95bfd351af2d8ee" id="r_a6c79090eaeddab1ed95bfd351af2d8ee"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c79090eaeddab1ed95bfd351af2d8ee">get_rate</a> ()</td></tr>
+<tr class="memdesc:a6c79090eaeddab1ed95bfd351af2d8ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the hourly rate for this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>.  <br /></td></tr>
+<tr class="separator:a6c79090eaeddab1ed95bfd351af2d8ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02cba471db0d286320e823bba4a8072e" id="r_a02cba471db0d286320e823bba4a8072e"><td class="memItemLeft" align="right" valign="top"><a id="a02cba471db0d286320e823bba4a8072e" name="a02cba471db0d286320e823bba4a8072e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_hours_worked</b> (int new_hours)</td></tr>
+<tr class="memdesc:a02cba471db0d286320e823bba4a8072e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the hours this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a> has worked this pay period. This is an example of a SETTER. Note, but not providing a setter for the other attributes we make them "read only". <br /></td></tr>
+<tr class="separator:a02cba471db0d286320e823bba4a8072e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70ad796cf15d56facb9a1d9786b0fa22" id="r_a70ad796cf15d56facb9a1d9786b0fa22"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70ad796cf15d56facb9a1d9786b0fa22">get_name</a> (bool reversed=true)</td></tr>
+<tr class="memdesc:a70ad796cf15d56facb9a1d9786b0fa22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the full-name of the person.  <br /></td></tr>
+<tr class="separator:a70ad796cf15d56facb9a1d9786b0fa22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a961cb230658aea48972003527410098e" id="r_a961cb230658aea48972003527410098e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a961cb230658aea48972003527410098e">get_salary</a> (bool reset=false)</td></tr>
+<tr class="memdesc:a961cb230658aea48972003527410098e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the salary of this.  <br /></td></tr>
+<tr class="separator:a961cb230658aea48972003527410098e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a1ddb0f7b4af376a796a292774c800446" id="r_a1ddb0f7b4af376a796a292774c800446"><td class="memItemLeft" align="right" valign="top"><a id="a1ddb0f7b4af376a796a292774c800446" name="a1ddb0f7b4af376a796a292774c800446"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>mFirstName</b></td></tr>
+<tr class="memdesc:a1ddb0f7b4af376a796a292774c800446"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>'s first name. <br /></td></tr>
+<tr class="separator:a1ddb0f7b4af376a796a292774c800446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae59560fb0c802535e086be1c57be6511" id="r_ae59560fb0c802535e086be1c57be6511"><td class="memItemLeft" align="right" valign="top"><a id="ae59560fb0c802535e086be1c57be6511" name="ae59560fb0c802535e086be1c57be6511"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>mLastName</b></td></tr>
+<tr class="memdesc:ae59560fb0c802535e086be1c57be6511"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>'s last name. <br /></td></tr>
+<tr class="separator:ae59560fb0c802535e086be1c57be6511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac34349cfda9e55dca641c305d395d699" id="r_ac34349cfda9e55dca641c305d395d699"><td class="memItemLeft" align="right" valign="top"><a id="ac34349cfda9e55dca641c305d395d699" name="ac34349cfda9e55dca641c305d395d699"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>mID</b></td></tr>
+<tr class="memdesc:ac34349cfda9e55dca641c305d395d699"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a (unique) ID assigned to this person. <br /></td></tr>
+<tr class="separator:ac34349cfda9e55dca641c305d395d699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ee332c7783fb539a8dc28eb1e1d4567" id="r_a0ee332c7783fb539a8dc28eb1e1d4567"><td class="memItemLeft" align="right" valign="top"><a id="a0ee332c7783fb539a8dc28eb1e1d4567" name="a0ee332c7783fb539a8dc28eb1e1d4567"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>mHoursWorked</b></td></tr>
+<tr class="memdesc:a0ee332c7783fb539a8dc28eb1e1d4567"><td class="mdescLeft">&#160;</td><td class="mdescRight">The hours worked this pay period (could be negative) <br /></td></tr>
+<tr class="separator:a0ee332c7783fb539a8dc28eb1e1d4567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a491e688adc589d8647e748e12302d258" id="r_a491e688adc589d8647e748e12302d258"><td class="memItemLeft" align="right" valign="top"><a id="a491e688adc589d8647e748e12302d258" name="a491e688adc589d8647e748e12302d258"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>mHourlyRate</b></td></tr>
+<tr class="memdesc:a491e688adc589d8647e748e12302d258"><td class="mdescLeft">&#160;</td><td class="mdescRight">The rate (in dollars) per hour of this person. <br /></td></tr>
+<tr class="separator:a491e688adc589d8647e748e12302d258"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This <a class="el" href="classexample_1_1_person.html" title="This Person class is an example of OOP techniques. Used for a couple projects (PersonDatabase) and as...">Person</a> class is an example of OOP techniques. Used for a couple projects (PersonDatabase) and as a test of a "complex" things (as opposed to int's, float's, strings) </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="af93a86f62bd01da12fe1b0a2bcf31a91" name="af93a86f62bd01da12fe1b0a2bcf31a91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af93a86f62bd01da12fe1b0a2bcf31a91">&#9670;&#160;</a></span>Person()</h2>
+<div class="textblock"><p>This is a simple class we'll use to explore basic C++ OOP (Object-Oriented Programming) concepts. It's not very useful in and of itself. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="acc7c6c1c1a81867676b7a9980e7a3dfa" name="acc7c6c1c1a81867676b7a9980e7a3dfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7c6c1c1a81867676b7a9980e7a3dfa">&#9670;&#160;</a></span>get_first_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">example::Person::Person </td>
+          <td class="memname">std::string example::Person::get_first_name </td>
           <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>start_id</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>start_fname</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>start_lname</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>This is the non-default constructor &ndash; mostly initializes all parameters based on arguments from the caller. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">start_id</td><td>This is the id# for the new <a class="el" href="classexample_1_1_person.html" title="This Person class is an example of OOP techniques. Used for a couple projects (PersonDatabase) and as...">Person</a></td></tr>
-    <tr><td class="paramname">start_fname</td><td>This is the first name for the new <a class="el" href="classexample_1_1_person.html" title="This Person class is an example of OOP techniques. Used for a couple projects (PersonDatabase) and as...">Person</a></td></tr>
-    <tr><td class="paramname">start_lname</td><td>This is the last name for the new <a class="el" href="classexample_1_1_person.html" title="This Person class is an example of OOP techniques. Used for a couple projects (PersonDatabase) and as...">Person</a></td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Gets the first name of this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a> (an example of a GETTER) </p>
+<dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>'s first name</dd></dl>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/examples/<a class="el" href="person_8h_source.html">person.h</a></li>
+<a id="a65ce00cd0d975eae66c70a3602b461c3" name="a65ce00cd0d975eae66c70a3602b461c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65ce00cd0d975eae66c70a3602b461c3">&#9670;&#160;</a></span>get_hours_worked()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int example::Person::get_hours_worked </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the hours this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a> has worked this pay period. </p>
+<dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>'s hours worked</dd></dl>
+
+</div>
+</div>
+<a id="a413a460a163cd80afe72f1d38d2d8514" name="a413a460a163cd80afe72f1d38d2d8514"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a413a460a163cd80afe72f1d38d2d8514">&#9670;&#160;</a></span>get_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int example::Person::get_id </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the ID of this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>'s id</dd></dl>
+
+</div>
+</div>
+<a id="a5a0b466aa90d254ca9d4e78defc6ffb2" name="a5a0b466aa90d254ca9d4e78defc6ffb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a0b466aa90d254ca9d4e78defc6ffb2">&#9670;&#160;</a></span>get_last_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string example::Person::get_last_name </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the last name of this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>the <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>'s last name</dd></dl>
+
+</div>
+</div>
+<a id="a70ad796cf15d56facb9a1d9786b0fa22" name="a70ad796cf15d56facb9a1d9786b0fa22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70ad796cf15d56facb9a1d9786b0fa22">&#9670;&#160;</a></span>get_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string example::Person::get_name </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>reversed</em><span class="paramdefsep"> = </span><span class="paramdefval">true</span></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute the full-name of the person. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reversed</td><td>true if we want "Last, First" or false if we want "First Last"</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The full computed name of this person</dd></dl>
+
+</div>
+</div>
+<a id="a6c79090eaeddab1ed95bfd351af2d8ee" name="a6c79090eaeddab1ed95bfd351af2d8ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c79090eaeddab1ed95bfd351af2d8ee">&#9670;&#160;</a></span>get_rate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float example::Person::get_rate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the hourly rate for this <a class="el" href="classexample_1_1_person.html" title="This is a simple class we&#39;ll use to explore basic C++ OOP (Object-Oriented Programming) concepts....">Person</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>hourly rate in dollars</dd></dl>
+
+</div>
+</div>
+<a id="a961cb230658aea48972003527410098e" name="a961cb230658aea48972003527410098e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a961cb230658aea48972003527410098e">&#9670;&#160;</a></span>get_salary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float example::Person::get_salary </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>reset</em><span class="paramdefsep"> = </span><span class="paramdefval">false</span></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Computes the salary of this. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reset</td><td>Set to true if we want to reset the hours worked after calling this method</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>include/example/<a class="el" href="person_8h_source.html">person.h</a></li>
+<li>src/example/<b>person.cpp</b></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
