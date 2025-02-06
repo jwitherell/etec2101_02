@@ -3,6 +3,10 @@
 
 namespace example
 {
+	// This is a CLASS DECLARATION -- it tells the compiler it WILL
+	// see a class like this in the example namespace (in another file)
+	class Foo;
+
 	/// <summary>
 	/// This is a simple class we'll use to explore basic C++ OOP 
 	/// (Object-Oriented Programming) concepts.  It's not very useful
@@ -128,5 +132,8 @@ namespace example
 		/// <param name="reset">Set to true if we want to reset the hours worked after calling this method</param>
 		/// <returns></returns>
 		float get_salary(bool reset = false);
+
+
+		void pointless_method(Foo& fref);
 	};
 }

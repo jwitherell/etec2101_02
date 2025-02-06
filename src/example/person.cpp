@@ -1,4 +1,5 @@
 #include <person.h>
+#include <foo.h>
 
 example::Person::Person()
 {
@@ -89,4 +90,11 @@ float example::Person::get_salary(bool reset)
 	if (reset)
 		mHoursWorked = 0;
 	return mHourlyRate * h;
+}
+
+
+void example::Person::pointless_method(example::Foo& fref)
+{
+	// Without the friend statement, we wouldn't be able to do this
+	fref.age += 2;
 }

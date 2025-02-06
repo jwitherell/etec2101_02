@@ -18,6 +18,9 @@
     <ClInclude Include="..\..\include\example\foo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\example\person.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\example\foo.cpp">

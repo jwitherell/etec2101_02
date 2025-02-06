@@ -44,10 +44,35 @@ unsigned int example::Foo::get_age()
 	return age;
 }
 
+void example::Foo::add_a_year()
+{
+	age++;
+}
+
+example::Foo example::Foo::operator+(int v)
+{
+	Foo new_foo(name, age + v);
+	return new_foo;
+}
+
+example::Foo example::Foo::operator+ (Foo& other_foo)
+{
+	Foo new_foo(name + "-" + other_foo.name, (age + other_foo.age) / 2);
+	return new_foo;
+}
 
 
-// Body of the FUNCTION
+
+// Body of the FUNCTIONS
+example::Foo example::operator+(int v, example::Foo& fref)
+{
+	// I want this to be commutative, so I do this
+	return fref + v;
+}
+
 void example::some_func(example::Foo& fref)
 {
+	// This is a function, an "outside entity".  Until we add
+	// the friend statement, we can't do this.
 	fref.age++;
 }

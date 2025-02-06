@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\example\foo.h" />
+    <ClInclude Include="..\..\include\example\person.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\example\foo.cpp" />
