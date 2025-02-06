@@ -6,7 +6,7 @@
     <ClCompile Include="..\..\src\example\person_database.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\example\person.h" />
     <ClInclude Include="..\..\include\example\person_database.h" />
+    <ClInclude Include="..\..\include\example\person.h" />
   </ItemGroup>
 </Project>
