@@ -26,10 +26,10 @@
     <ClCompile Include="..\..\src\example\foo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\friends_and_operators.cpp">
+    <ClCompile Include="..\..\src\example\person.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\example\person.cpp">
+    <ClCompile Include="..\..\src\scratch\vector_iterator_example.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
