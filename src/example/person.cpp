@@ -1,5 +1,4 @@
 #include <person.h>
-#include <foo.h>
 
 example::Person::Person()
 {
@@ -18,7 +17,7 @@ example::Person::~Person()
 
 
 
-example::Person::Person(std::string starting_fname, std::string starting_lname, unsigned int id, float starting_rate) :
+example::Person::Person(const std::string& starting_fname, const std::string& starting_lname, unsigned int id, float starting_rate) :
 	mFirstName(starting_fname), mLastName(starting_lname), mID(id), mHourlyRate(starting_rate),
 	mHoursWorked(0)
 {
@@ -90,11 +89,4 @@ float example::Person::get_salary(bool reset)
 	if (reset)
 		mHoursWorked = 0;
 	return mHourlyRate * h;
-}
-
-
-void example::Person::pointless_method(example::Foo& fref)
-{
-	// Without the friend statement, we wouldn't be able to do this
-	fref.age += 2;
 }

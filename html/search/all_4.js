@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['remove_5fperson_0',['remove_person',['../classexample_1_1_person_database.html#a831835c506fa66d02deb9e16db7145de',1,'example::PersonDatabase']]]
+  ['insert_0',['insert',['../classssuds_1_1_array_list.html#a1dbbdcacdc26c51d015967f4e8329c1d',1,'ssuds::ArrayList']]]
 ];

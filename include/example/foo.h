@@ -1,43 +1,63 @@
 #pragma once
 #include <string>
 
+// A "forward declaration" to a function defined elsewhere.
+
+
 namespace example
 {
+	void func();
+
 	class Foo
 	{
 	private:
 		std::string name;
 		unsigned int age;
 	public:
-		Foo(std::string n, unsigned int i);
+		Foo(std::string n, unsigned a);
 		Foo();
-		void set_name(std::string n);
-		void set_age(unsigned int i);
-		std::string get_name();
-		unsigned int get_age();
+		~Foo();
 
-		void add_a_year();
-
-		// This makes the some_func function a "friend"
-		friend void some_func(Foo& fref);
-
-		// This makes ALL of the Person class a friend
-		friend class Person;
-
-		// An operator overload
-		Foo operator+ (int v);
-
-		// The parameter is the thing on the right hand side of the + from caller's view
-		Foo operator+ (Foo& other_foo);
+		// Called when the user does this:
+		// some_foo + i, and that it returns a Foo object
+		Foo operator+(int i);
 
 
+		void some_method();
+
+		friend void func(Foo& fref);	// We are giving this function (in the
+										// example namespace) normally unauthorized
+										// access to our attributes
+
+
+		friend class AnotherClass;		// This class is defined
+										// elsewhere and in all methods,attributes,
+										// etc. IT has access to private things
+										// declared here.
+		
+		// This one is "weird" in that we're making the function here in the
+		// class, but it's considered to be OUTSIDE the class for access rules
+		// BUT we're making it a friend.  Weird also in that it's put in the
+		// GLOBAL NAMESPACE
+		friend void weird_func(Foo& a_foo)
+		{
+			a_foo.age += 2;
+		}
+
+
+		// This is making a function (like below) that is outside the
+		// class, but has ALL access.
+		friend Foo operator+(int i, Foo& right_foo)
+		{
+			Foo return_val;
+			// We wouldn't be able to do the following line if we were a 
+			// normal function, but can since we're a friend
+			return_val.age = right_foo.age + i;
+			return return_val;
+		}
 	};
 
 
-	// An operator FUNCTION -- the int is on the left, Foo on the right
-	Foo operator+(int v, Foo& fref);
-
-
-	// A function
-	void some_func(Foo& fref);
+	// Make a FUNCTION to do "reverse subtract"
+	Foo operator-(int i, Foo right_foo);
 }

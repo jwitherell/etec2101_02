@@ -1,78 +1,55 @@
 #include <foo.h>
+#include <iostream>
 
-example::Foo::Foo(std::string n, unsigned int i) : name(n), age(i)
+
+// This new sytax assigns a value as the thing is created.  This is 
+// mandatory for references.  Also mandatory often when doing inheritance
+// (and your base class has no default constructors).  This syntax only
+// makes sense in constructors
+example::Foo::Foo(std::string n, unsigned a) : name(n), age(a)
 {
-	// Now the variables have their constructors run, values assigned
-	// when we create the Foo object.  If we had a reference for example,
-	// it would have to be initialized this way.  Also often used
-	// in inheritance.
-
-	// The variable is already created (the string constructor has run,
-	// the integer doesn't have a constructor).  We're here, over-writing
-	// those values with new ones.  We can be faster way by doing the above
+	// The above is an alternative to this
 	//name = n;
-	///age = i;
+	//age = a;
 }
 
 
 example::Foo::Foo() : name("???"), age(0)
 {
-	// Empty, on purpose.
+	// Intentionally empty
 }
 
 
-void example::Foo::set_name(std::string n)
+example::Foo::~Foo()
 {
-	name = n;
+
+}
+
+void example::Foo::some_method()
+{
+	std::cout << "A foo with name=" << name << " and age=" << age << "\n";
 }
 
 
-void example::Foo::set_age(unsigned int i)
+example::Foo example::Foo::operator+(int i)
 {
-	age = i;
-}
-
-
-std::string example::Foo::get_name()
-{
-	return name;
-}
-
-
-unsigned int example::Foo::get_age()
-{
-	return age;
-}
-
-void example::Foo::add_a_year()
-{
-	age++;
-}
-
-example::Foo example::Foo::operator+(int v)
-{
-	Foo new_foo(name, age + v);
-	return new_foo;
-}
-
-example::Foo example::Foo::operator+ (Foo& other_foo)
-{
-	Foo new_foo(name + "-" + other_foo.name, (age + other_foo.age) / 2);
+	Foo new_foo(name, age + i);
 	return new_foo;
 }
 
 
 
-// Body of the FUNCTIONS
-example::Foo example::operator+(int v, example::Foo& fref)
+// This is a FUNCTION, not a method!
+example::Foo example::operator-(int i, example::Foo right_foo)
 {
-	// I want this to be commutative, so I do this
-	return fref + v;
-}
+	// We want to do something like this, but we don't have access
+	// to the private memebers of right_foo, so can't
+	//Foo return_value;
+	//return_value.name = right_foo.name;
+	//return_value.age = right_foo.age + i;
+	//return return_value;
 
-void example::some_func(example::Foo& fref)
-{
-	// This is a function, an "outside entity".  Until we add
-	// the friend statement, we can't do this.
-	fref.age++;
+	// We can, however, use any public methods of right_foo, like the *other*
+	// plus operator, like this: 
+	return right_foo + (-i);
 }

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7eperson_0',['~Person',['../classexample_1_1_person.html#ab88de04d70f4615a3563ae51ea611af6',1,'example::Person']]],
-  ['_7epersondatabase_1',['~PersonDatabase',['../classexample_1_1_person_database.html#a84558db880f925669f94925eb06ea1e2',1,'example::PersonDatabase']]]
+  ['person_0',['Person',['../classexample_1_1_person.html#a13cef9dd175bcc612ae4fca575f91bc5',1,'example::Person::Person()'],['../classexample_1_1_person.html#a85cb13dd10859c1df85d72a4621c318c',1,'example::Person::Person(std::string starting_fname, std::string starting_lname, unsigned int id, float starting_rate)']]],
+  ['persondatabase_1',['PersonDatabase',['../classexample_1_1_person_database.html#a5845e87cbf0ef0dc90192020a9dfd8b9',1,'example::PersonDatabase']]]
 ];

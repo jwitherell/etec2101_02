@@ -1,4 +1,5 @@
 #include <iostream>
+#define PERSON_DATABASE_USE_NEW_IMPLEMENTATION   // <- Added for bonus on Lab2.  Remove to use old impl.
 #include <person_database.h>
 #include <person.h>				// <- not necessary, but OK to (re-) include
 
@@ -40,7 +41,7 @@ bool input_person(example::Person* in_ptr)
 		return false;
 	}
 
-	
+
 	std::cout << "\tEnter Hours worked: ";
 	int temp_hours;
 	std::cin >> temp_hours;
