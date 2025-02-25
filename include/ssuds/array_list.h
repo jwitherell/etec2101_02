@@ -2,16 +2,219 @@
 #include <string>
 #include <stdexcept>
 #include <ostream>
+#include <iostream>
 
 // Note: in C++, a general tempate (like this one) must be defined inline
 // entirely in the .h file (no .cpp files).  
-
 namespace ssuds
 {
 	/// An ArrayList is an array-based data structure. 
 	template <class T>
 	class ArrayList
 	{
+		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		// @ ENUM CLASSES                           @
+		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		enum class ArrayListIteratorType 
+		{ 
+			/// <summary>
+			/// This ArrayList iterator visits items from beginning to end
+			/// </summary>
+			forward, 
+
+			/// <summary>
+			/// This ArrayList iterator visits items from end to beginning
+			/// </summary>
+			backwards 
+		};
+
+		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		// @ NESTED CLASSES                         @
+		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	public:
+		/// <summary>
+		/// The job of ArrayListIterator is to traverse the data in an ArrayList.  ArrayList
+		/// wouldn't necessarily *need* an iterator since the internal array supports random access,
+		/// but this is a chance to get used to the iterator pattern, which is much more useful
+		/// for the user in other classes.  We might eventually use inheritance to derive this class
+		/// from some common iterator class.
+		/// </summary>
+		class ArrayListIterator
+		{
+		protected:
+			/// <summary>
+			/// A pointer to the containing ArrayList
+			/// </summary>
+			const ArrayList* mArrayList;
+
+			/// <summary>
+			/// The current position within the array list.  Anything from 0...ArrayListSize-1 is considered
+			/// "valid", all other values are invalid
+			/// </summary>
+			int mPosition;
+
+
+			/// <summary>
+			/// Which type of iterator are we?
+			/// </summary>
+			ArrayListIteratorType mType;
+
+		public:
+			/// <summary>
+			/// The main constructor
+			/// </summary>
+			/// <param name="arr">The ArrayList we are to traverse</param>
+			/// <param name="tp">What type of traversal to do</param>
+			/// <param name="start_index">The index to start on</param>
+			ArrayListIterator(const ArrayList* arr, ArrayListIteratorType tp, int start_index) : mArrayList(arr), mPosition(start_index), mType(tp)
+			{
+				// intentionally empty
+			}
+
+
+			/// <summary>
+			/// This constructor only really has value if the user makes an iterator (BUT DOES NOT USE!)
+			/// and then later assigns it a real value.  If the user does anything with an iterator
+			/// created like this, bad thigs will happen...
+			/// </summary>
+			ArrayListIterator() : mArrayList(nullptr), mType(ArrayListIteratorType::forward), mPosition(0)
+			{
+				// intentionally empty
+			}
+
+
+			/// <summary>
+			/// Copy-constructor
+			/// </summary>
+			/// <param name="other"></param>
+			ArrayListIterator(const ArrayListIterator& other) : mArrayList(other.mArrayList), mPosition(other.mPosition),
+				mType(other.mType)
+			{
+				// intentionally empty
+			}
+
+
+			/// <summary>
+			/// Are we equal to the other iterator?  I'm currently not considering the ArrayListIterator type...
+			/// I'm not sure if that's the right call or not.
+			/// </summary>
+			/// <param name="other">The iterator we're comparing ourself to</param>
+			/// <returns>true if we're equal</returns>
+			bool operator==(const ArrayListIterator& other) const
+			{
+				return mArrayList == other.mArrayList && mPosition == other.mPosition;
+			}
+
+			/// <summary>
+			/// Are we not equal to the other iterator?  This is computed by inverting the result of the
+			/// == operator
+			/// </summary>
+			/// <param name="other">The iterator we're comparing ourself to</param>
+			/// <returns>true if we're NOT equal</returns>
+			bool operator!=(const ArrayListIterator& other) const
+			{
+				return !(*this == other);
+			}
+
+
+			/// <summary>
+			/// Increments / advances the iterator (prefix ++x version).  This version of ++ returns
+			/// a copy of the Iterator *after* the ++ is performed.  So if the user did this:
+			/// y = ++x
+			/// X is changed, and a copy is returned which can be assigned to y.
+			/// It is the responsibility of the user to NOT call this if the iterator is 
+			/// invalid (equal to end/rend) -- if they ignore this rule, the results are indeterminate.
+			/// </summary>
+			ArrayListIterator operator++()
+			{
+				if (mType == ArrayListIteratorType::forward)
+					++mPosition;
+				else
+					--mPosition;
+
+				return ArrayListIterator(mArrayList, mType, mPosition);
+			}
+
+
+			/// <summary>
+			/// Increments / advances the iterator (postfix x++ version).  This version of ++ returns
+			/// a copy of the Iterator *before* the ++ is performed.  So if the user did this:
+			/// y = x++
+			/// X is changed, but y will hold the iterator value before the change.  
+			/// It is the responsibility of the user to NOT call this if the iterator is 
+			/// invalid (equal to end/rend) -- if they ignore this rule, the results are indeterminate.
+			/// <param name="not_used">This parameter is not used at all, but the compiler passes us
+			/// a value so we can have both versions of ++</param>
+			/// </summary>
+			ArrayListIterator operator++(int not_used)
+			{
+				ArrayListIterator return_val(mArrayList, mType, mPosition);
+				if (mType == ArrayListIteratorType::forward)
+					++mPosition;
+				else
+					--mPosition;
+				return return_val;
+			}
+
+
+			/// <summary>
+			/// Returns a copy of this iterator that is some amount offset from the current position.
+			/// The resulting index of that iterator is constratined to be within -1...mSize
+			/// </summary>
+			/// <param name="offset">The amount to offset this iterator (positive or negative)</param>
+			/// <returns>A copy of this iterator with the given offset applied</returns>
+			ArrayListIterator operator+(int offset) const
+			{
+				int new_index = mPosition + offset;
+				if (new_index < -1)
+					new_index = -1;
+				if (new_index >= (int)mArrayList->size())
+					new_index = (int)mArrayList->size();
+
+				return ArrayListIterator(mArrayList, mType, new_index);
+			}
+
+
+			/// <summary>
+			/// I don't think std::vector does this, but it is the inverse of the + operator and easy to add
+			/// </summary>
+			/// <param name="offset">The amount to offset this iterator by (inverted)</param>
+			/// <returns>A copy of this iterator with the given offset</returns>
+			ArrayListIterator operator-(int offset) const
+			{
+				return (*this) + (-offset);
+			}
+
+
+			/// <summary>
+			/// Returns a reference to the current item in the ArrayList.  It is important that the
+			/// user only call this method if the iterator is not in an invalid state (defined by being
+			/// equal to end/rend)
+			/// </summary>
+			/// <returns>A reference to the current object</returns>
+			T& operator*()
+			{
+				return (*mArrayList)[mPosition];
+			}
+
+
+			/// <summary>
+			/// Used to copy one ArrayListIterator value to another
+			/// </summary>
+			/// <param name="other">The ArrayListIterator we're copying from</param>
+			/// <returns>A reference to this changed ArrayListIterator</returns>
+			ArrayListIterator& operator=(const ArrayListIterator& other)
+			{
+				mArrayList = other.mArrayList;
+				mPosition = other.mPosition;
+				mType = other.mType;
+				return *this;
+			}
+
+			// I needed access in the remove method.
+			friend class ArrayList;
+		};
+
 	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	// @ ATTRIBUTES                              @
 	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -31,16 +234,125 @@ namespace ssuds
 		unsigned char* mData;
 	
 
+	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	// @ OPERATOR OVERLOADS                      @
+	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	public:
+
+		/// <summary>
+		/// Overloads the stream operator for ArrayLists.
+		/// </summary>
+		/// <param name="os">an ostream object (ofstream, stringstream, cout, etc.) </param>
+		/// <param name="alist">the ArrayList</param>
+		/// <returns>the (possibly modified) os that was given to us</returns>
+		friend std::ostream& operator <<(std::ostream& os, const ArrayList& alist)
+		{
+			os << "[";
+			for (unsigned int i = 0; i < alist.size(); i++)
+			{
+				os << alist[i];
+				if (i < alist.size() - 1)
+					os << ", ";
+			}
+			os << "]";
+			return os;
+		}
+
+
+		/// <summary>
+		/// Gets the data item at the given index.  This method (unlike at) does NOT
+		/// do bounds-checking (and so is very slightly faster)
+		/// </summary>
+		/// <param name="index">the index of the thing to return</param>
+		/// <returns>a reference to the value at the given index</returns>
+		T& operator[](int index) const
+		{
+			return (T&)(mData[index * sizeof(T)]);
+		}
+
+
+
+		/// <summary>
+		/// Allows the creation of a deep copy when the user assigns an existing
+		/// ArrayList to another.  This method also handles the case where the user
+		/// self-copies (a = a).
+		/// </summary>
+		/// <param name="other">The other ArrayList we are assigning to</param>
+		/// <returns>a reference to this ArrayList</returns>
+		ArrayList<T>& operator= (const ArrayList<T>& other)
+		{
+			// Save away all data we need from other
+			unsigned char* other_data_copy = new unsigned char[other.mCapacity * sizeof(T)];
+			memcpy(other_data_copy, other.mData, sizeof(T) * other.mCapacity);
+			unsigned int other_size = other.size();
+			unsigned int other_capacity = other.capacity();
+
+			// Clear our data.  There is a chance that this and other are the same thing, which
+			// was why it was important to save away the data above before doing this.
+			clear();
+
+			// Now just assign values from the temporaries we saved away
+			mData = other_data_copy;
+			mCapacity = other_capacity;
+			mSize = other_size;
+
+			// Finally return a reference to ourself to support chain-assignments like
+			// b = this_array_list = a;
+			return *this;
+		}
+
+
 
 	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	// @ CONSTRUCTORS / DESTRUCTORS              @
 	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	public:
-		/// Default constructor
+		/// <summary>
+		/// The Default constructor
+		/// </summary>
 		ArrayList() : mSize(0), mCapacity(0), mData(nullptr)
 		{
 			// intentionally empty
 		};
+
+
+		/// <summary>
+		/// The copy-constructor.  Used in these two cases
+		/// ArrayList me(other_array_list);
+		/// ArrayList me = other_array_list;    Note: this does NOT use the =operator
+		/// ...
+		/// me = other_array_list;				This WOULD use the =operator
+		/// </summary>
+		/// <param name="other"></param>
+		ArrayList(const ArrayList& other) : mCapacity(other.mCapacity), mSize(other.mSize)
+		{
+			mData = new unsigned char[mCapacity * sizeof(T)];
+			for (unsigned int i = 0; i < other.size(); i++)
+				(*this)[i] = other[i];
+		}
+
+		/// <summary>
+		/// The move-constructor.  This makes a shallow copy of other.  A better way to explain
+		/// might be to say that this constructor "steals" the data from the other array.  The compiler
+		/// calls this method when ArrayList other is about to go away, and it is being assigned
+		/// to us.  Making a full copy would be much more expensive than this.
+		/// </summary>
+		/// <param name="other"></param>
+		ArrayList(ArrayList&& other) : mCapacity(other.mCapacity), mSize(other.mSize), mData(other.mData)
+		{
+			other.mData = NULL;
+			other.mCapacity = 0;
+			other.mSize = 0;
+		}
+
+		/// Initializer-list constructor
+		ArrayList(std::initializer_list<T> ilist) : mCapacity((int)ilist.size()), mSize((int)ilist.size())
+		{
+			mData = new unsigned char[mCapacity * sizeof(T)];
+			int i = 0;
+			for (T val : ilist)
+				(*this)[i++] = val;
+		}
 
 
 
@@ -97,6 +409,17 @@ namespace ssuds
 
 
 		/// <summary>
+		/// Returns an forward ArrayListIterator "pointing" at the first element (if it exists).  If the
+		/// ArrayListIterator is empty, this iterator will be equal to end.
+		/// </summary>
+		/// <returns>A forward iterator referring to the first value value</returns>
+		ArrayListIterator begin() const
+		{
+			return ArrayListIterator(this, ArrayListIteratorType::forward, 0);
+		}
+
+
+		/// <summary>
 		/// Returns the current capacity of the ArrayList (this is always
 		/// greater than or equal to the size)
 		/// </summary>
@@ -117,6 +440,19 @@ namespace ssuds
 			mSize = 0;
 			mCapacity = 0;
 		}
+
+
+		/// <summary>
+		/// The name can be a bit mis-leading, but this iterator does NOT return an iterator referring
+		/// to the LAST element.  Instead, it returns a special value that indicates this is an invalid
+		/// iterator (or we're done forward-traversing)
+		/// </summary>
+		/// <returns>An "end" type iterator value</returns>
+		ArrayListIterator end() const
+		{
+			return ArrayListIterator(this, ArrayListIteratorType::forward, mSize);
+		}
+
 
 		/// <summary>
 		/// Finds the index of the first occurrence of the given value
@@ -139,6 +475,42 @@ namespace ssuds
 			// We didn't find it
 			return -1;
 		}
+
+
+		/// <summary>
+		/// Like the find method above, but using iterators (closer to std::vector)
+		/// </summary>
+		/// <param name="val">The value to search for</param>
+		/// <param name="start">Either begin, rbegin, or some other iterator to initialize the search</param>
+		/// <returns>And end iterator or rend/end iterator value if not found</returns>
+		ArrayListIterator find(const T& val, const ArrayListIterator& start) const
+		{
+			if (start.mArrayList != this)
+				throw std::runtime_error("iterator must be based on this ArrayList");
+
+			// Make a copy of the ArrayListIterator we were given and one to hold the end iterator value
+			ArrayListIterator temp = start;
+			ArrayListIterator ender;
+
+			// Properly assign the ender-man
+			if (start.mType == ArrayListIteratorType::forward)
+				ender = end();
+			else
+				ender = rend();
+
+			// Now, continue until we reach the end or one of the values
+			while (temp != ender)
+			{
+				if (*temp == val)
+					return temp;
+				else
+					++temp;
+			}
+
+			return temp;
+		}
+
+
 
 	
 
@@ -169,10 +541,12 @@ namespace ssuds
 		}
 
 
+
 		/// <summary>
-		/// Outputs the ArrayList to the given output stream
+		/// This basically does the same thing as the << operator (the syntax is a bit different).  I 
+		/// chose to keep it to preserve backwards compatiability with <Lab3 code.
 		/// </summary>
-		/// <param name="os">an ostream object (ofstream, stringstream, cout, etc.) </param>
+		/// <param name="os">The output stream (cout, fp, stringstring, etc.) to write to</param>
 		void output(std::ostream& os) const
 		{
 			os << "[";
@@ -184,6 +558,29 @@ namespace ssuds
 			}
 			os << "]";
 		}
+
+
+
+		/// <summary>
+		/// Returns a backwards ArrayListIterator "pointing" at the last element (if it exists).  If the
+		/// ArrayListIterator is empty, this iterator will be equal to rend.
+		/// </summary>
+		/// <returns>A backwards iterator referring to the last valid value</returns>
+		ArrayListIterator rbegin() const
+		{
+			return ArrayListIterator(this, ArrayListIteratorType::backwards, mSize - 1);
+		}
+
+
+		/// <summary>
+		/// Returns a special value indicating we're done iterating backwards or that this iterator is invalid
+		/// </summary>
+		/// <returns>A special end value for backwards iteration</returns>
+		ArrayListIterator rend() const
+		{
+			return ArrayListIterator(this, ArrayListIteratorType::backwards, -1);
+		}
+
 
 		/// <summary>
 		/// Removes a data item at the given index
@@ -212,6 +609,28 @@ namespace ssuds
 			// Return the result
 			return result;
 		}
+
+
+		/// <summary>
+		/// Removes the value at the given position
+		/// </summary>
+		/// <param name="it">A valid iterator referring to the value that the user wants to remove</param>
+		/// <returns>An iterator now referring to the value *after* the value removed (or end/rend if there's
+		/// nothing after)</returns>
+		ArrayListIterator remove(const ArrayListIterator& it)
+		{
+			if (it.mArrayList != this || it.mPosition < 0 || it.mPosition > (int)mSize)
+				throw std::out_of_range("Invalid iterator state");
+			
+			remove(it.mPosition);
+			if (it.mType == ArrayListIteratorType::forward)
+				return it;
+			else
+			{
+				return it - 1;
+			}
+		}
+
 
 		/// <summary>
 		/// Removes all occurrences of a given value.  Uses find and remove internally to do the removal

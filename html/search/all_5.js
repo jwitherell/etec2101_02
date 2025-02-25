@@ -1,15 +1,12 @@
 var searchData=
 [
-  ['marray_0',['mArray',['../classexample_1_1_person_database.html#a098b0d09ebea53a45dc32ff1443ce5a9',1,'example::PersonDatabase']]],
-  ['marraysize_1',['mArraySize',['../classexample_1_1_person_database.html#a204a18327955cce58e9426c5002b7d34',1,'example::PersonDatabase']]],
-  ['mcapacity_2',['mCapacity',['../classssuds_1_1_array_list.html#ae115ebf93fded10801e4baedfc2518db',1,'ssuds::ArrayList']]],
-  ['mdata_3',['mData',['../classssuds_1_1_array_list.html#aeab51f415e302012806b0d6cdfefc96b',1,'ssuds::ArrayList']]],
-  ['mfilename_4',['mFilename',['../classexample_1_1_person_database.html#adb71d6cc7a2946203261a5cc72f11618',1,'example::PersonDatabase']]],
-  ['mfirstname_5',['mFirstName',['../classexample_1_1_person.html#a1ddb0f7b4af376a796a292774c800446',1,'example::Person']]],
-  ['mhourlyrate_6',['mHourlyRate',['../classexample_1_1_person.html#a491e688adc589d8647e748e12302d258',1,'example::Person']]],
-  ['mhoursworked_7',['mHoursWorked',['../classexample_1_1_person.html#a0ee332c7783fb539a8dc28eb1e1d4567',1,'example::Person']]],
-  ['mid_8',['mID',['../classexample_1_1_person.html#ac34349cfda9e55dca641c305d395d699',1,'example::Person']]],
-  ['mlastname_9',['mLastName',['../classexample_1_1_person.html#ae59560fb0c802535e086be1c57be6511',1,'example::Person']]],
-  ['msize_10',['mSize',['../classssuds_1_1_array_list.html#aad989b2e39f5ea46fe85499341139352',1,'ssuds::ArrayList']]],
-  ['msmincapacity_11',['msMinCapacity',['../classssuds_1_1_array_list.html#a5b588e6e70c9a9b5cacbc7ce5b971490',1,'ssuds::ArrayList']]]
+  ['get_5ffirst_5fname_0',['get_first_name',['../classexample_1_1_person.html#acc7c6c1c1a81867676b7a9980e7a3dfa',1,'example::Person']]],
+  ['get_5fhours_5fworked_1',['get_hours_worked',['../classexample_1_1_person.html#a65ce00cd0d975eae66c70a3602b461c3',1,'example::Person']]],
+  ['get_5fid_2',['get_id',['../classexample_1_1_person.html#a413a460a163cd80afe72f1d38d2d8514',1,'example::Person']]],
+  ['get_5flast_5fname_3',['get_last_name',['../classexample_1_1_person.html#a5a0b466aa90d254ca9d4e78defc6ffb2',1,'example::Person']]],
+  ['get_5fname_4',['get_name',['../classexample_1_1_person.html#a70ad796cf15d56facb9a1d9786b0fa22',1,'example::Person']]],
+  ['get_5fnum_5fpeople_5',['get_num_people',['../classexample_1_1_person_database.html#a2aac519399c6cea2a5be3995b6385516',1,'example::PersonDatabase']]],
+  ['get_5frate_6',['get_rate',['../classexample_1_1_person.html#a6c79090eaeddab1ed95bfd351af2d8ee',1,'example::Person']]],
+  ['get_5fsalary_7',['get_salary',['../classexample_1_1_person.html#a961cb230658aea48972003527410098e',1,'example::Person']]],
+  ['grow_8',['grow',['../classssuds_1_1_array_list.html#a07a02cc34fc7c9162e64e3c7a7d1a963',1,'ssuds::ArrayList']]]
 ];
