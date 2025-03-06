@@ -2,7 +2,6 @@
 #include <string>
 #include <stdexcept>
 #include <ostream>
-#include <iostream>
 
 // Note: in C++, a general tempate (like this one) must be defined inline
 // entirely in the .h file (no .cpp files).  
@@ -228,11 +227,9 @@ namespace ssuds
 		/// How many slots are we USING?  This will always be less than or equal to mCapacity
 		unsigned int mSize;
 
-		/// The array of data we're currently holding.  Note: an alternative would've been T* mData
-		/// but I'm attempting to use raw bytes here so we don't have to have a default constructor
-		/// for templated types.
-		unsigned char* mData;
-	
+		// This is the "traditional" approach, but does require that we have a default constructor
+		T* mData;
+
 
 	// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	// @ OPERATOR OVERLOADS                      @
@@ -247,14 +244,7 @@ namespace ssuds
 		/// <returns>the (possibly modified) os that was given to us</returns>
 		friend std::ostream& operator <<(std::ostream& os, const ArrayList& alist)
 		{
-			os << "[";
-			for (unsigned int i = 0; i < alist.size(); i++)
-			{
-				os << alist[i];
-				if (i < alist.size() - 1)
-					os << ", ";
-			}
-			os << "]";
+			alist.output(os);
 			return os;
 		}
 
@@ -267,7 +257,7 @@ namespace ssuds
 		/// <returns>a reference to the value at the given index</returns>
 		T& operator[](int index) const
 		{
-			return (T&)(mData[index * sizeof(T)]);
+			return mData[index];
 		}
 
 
@@ -282,8 +272,10 @@ namespace ssuds
 		ArrayList<T>& operator= (const ArrayList<T>& other)
 		{
 			// Save away all data we need from other
-			unsigned char* other_data_copy = new unsigned char[other.mCapacity * sizeof(T)];
-			memcpy(other_data_copy, other.mData, sizeof(T) * other.mCapacity);
+			T* other_data_copy = new T[other.mCapacity];
+			for (unsigned int i = 0; i < other.mSize; i++)
+				other_data_copy[i] = other[i];
+
 			unsigned int other_size = other.size();
 			unsigned int other_capacity = other.capacity();
 
@@ -326,7 +318,7 @@ namespace ssuds
 		/// <param name="other"></param>
 		ArrayList(const ArrayList& other) : mCapacity(other.mCapacity), mSize(other.mSize)
 		{
-			mData = new unsigned char[mCapacity * sizeof(T)];
+			mData = new T[other.mCapacity];
 			for (unsigned int i = 0; i < other.size(); i++)
 				(*this)[i] = other[i];
 		}
@@ -348,7 +340,7 @@ namespace ssuds
 		/// Initializer-list constructor
 		ArrayList(std::initializer_list<T> ilist) : mCapacity((int)ilist.size()), mSize((int)ilist.size())
 		{
-			mData = new unsigned char[mCapacity * sizeof(T)];
+			mData = new T[mCapacity];
 			int i = 0;
 			for (T val : ilist)
 				(*this)[i++] = val;
@@ -380,14 +372,8 @@ namespace ssuds
 			// check to see if we need to increase our capacity
 			grow();
 
-			// Stick our new element in the last slot and (sneakily) increase our size in the process
-			// ... This is what I had originally...
-			//(T&)(mData[mSize * sizeof(T)]) = val;
-			// ... but I switched to this.  Person seemed to be a problem (in particular the strings)
-			//     Memcpy would side-step any = operators.  I'm not 100% sure why this fixed the problem
-			memcpy(&mData[mSize * sizeof(T)], &val, sizeof(T));
-			//T temp = (T&)(mData[mSize * sizeof(T)]);     // <- seeing if I could read out what i put in just now
-			mSize++;
+			// Put the data in the last spot (and sneakily increase the size!)
+			mData[mSize++] = val;
 		}
 
 
@@ -404,7 +390,7 @@ namespace ssuds
 		{
 			if (index >= mSize)
 				throw std::out_of_range("Invalid index (" + std::to_string(index) + ")");
-			return (T&)(mData[index * sizeof(T)]);
+			return mData[index];
 		}
 
 
@@ -463,7 +449,7 @@ namespace ssuds
 		int find(const T& val, const unsigned int start_index = 0) const
 		{
 			if (start_index >= mSize)
-				throw std::out_of_range("Invalid index: " + std::to_string(start_index));
+				return -1;
 
 			for (unsigned int i = start_index; i < mSize; i++)
 			{
@@ -530,12 +516,11 @@ namespace ssuds
 				// check to see if we need to increase capacity first
 				grow();
 
-				// Move all the elements that come *after* index up one spot
-				memcpy(&mData[sizeof(T) * (index + 1)], &mData[index * sizeof(T)], (mSize - index) * sizeof(T));
-
+				// Move all elements at or after the given index down one spot
+				for (unsigned int i = mSize; i > index; i--)
+					mData[i] = mData[i - 1];
 				// Put our new elements in spot index and increase our size
-				//(T&)(mData[index * sizeof(T)]) = val;
-				memcpy(&mData[index * sizeof(T)], &val, sizeof(T));
+				mData[index] = val;
 				mSize++;
 			}
 		}
@@ -550,13 +535,30 @@ namespace ssuds
 		void output(std::ostream& os) const
 		{
 			os << "[";
-			for (unsigned int i = 0; i < size(); i++)
+			for (unsigned int i = 0; i < mSize; i++)
 			{
-				os << at(i);
-				if (i < size() - 1)
+				os << (*this)[i];
+				if (i < mSize - 1)
 					os << ", ";
 			}
 			os << "]";
+		}
+
+
+
+		void prepend(const T& val)
+		{
+			// check to see if we need to increase our capacity
+			grow();
+
+
+			// Move the items "down" one index to make room
+			for (unsigned int i = mSize; i > 0; i--)
+				mData[i] = mData[i - 1];
+
+			// Put the new item into the first spot
+			mData[0] = val;
+			mSize++;
 		}
 
 
@@ -594,10 +596,11 @@ namespace ssuds
 				throw std::out_of_range("Invalid index: " + std::to_string(index));
 
 			// Get the value we'll return at the end (the element removed)
-			T result = (T&)(mData[index * sizeof(T)]);
+			T result = mData[index];
 
 			// Move all elements that come after index down one spot
-			memcpy(&mData[index * sizeof(T)], &mData[(index + 1) * sizeof(T)], (mSize - index - 1) * sizeof(T));
+			for (unsigned int i = index; i < mSize - 1; i++)
+				mData[i] = mData[i + 1];
 
 			// Decrement our size
 			mSize--;
@@ -673,11 +676,11 @@ namespace ssuds
 			if (desired_capacity > mCapacity)
 			{
 				// Make the larger array
-				unsigned char* temp_array = new unsigned char[desired_capacity * sizeof(T)];
-				memset(temp_array, 0, sizeof(T) * desired_capacity);
+				T* temp_array = new T[desired_capacity];
 
 				// Copy data from the existing array
-				memcpy(temp_array, mData, mSize * sizeof(T));
+				for (unsigned int i = 0; i < mSize; i++)
+					temp_array[i] = mData[i];
 
 				// Free the old array
 				delete[] mData;
@@ -698,9 +701,6 @@ namespace ssuds
 		}
 
 
-		
-
-
 	protected:
 		/// <summary>
 		/// An internal method to resize the array if we are currently at capacity (if we are not, nothing is done)
@@ -710,22 +710,17 @@ namespace ssuds
 			if (mSize == mCapacity)
 			{
 				// Allocate what will become the new array
-				unsigned char* new_array = nullptr;
+				T* new_array = nullptr;
 				if (mCapacity == 0)
-				{
-					new_array = new unsigned char[msMinCapacity * sizeof(T)];
-					memset(new_array, 0, msMinCapacity * sizeof(T));
-				}
+					new_array = new T[msMinCapacity];
 				else
-				{
-					new_array = new unsigned char[(mCapacity * 2) * sizeof(T)];
-					memset(new_array, 0, (mCapacity * 2) * sizeof(T));
-				}
+					new_array = new T[mCapacity * 2];
 
 				// Copy over data from the old array (if any)
 				if (mData != nullptr)
 				{
-					memcpy(new_array, mData, sizeof(T) * mSize);
+					for (unsigned int i = 0; i < mSize; i++)
+						new_array[i] = mData[i];
 
 					// Destroy the old array
 					delete[] mData;
@@ -751,12 +746,12 @@ namespace ssuds
 			if (mSize < mCapacity / 4 && mCapacity > msMinCapacity)
 			{
 				// Allocate what will become the new array
-				unsigned char* new_array = new unsigned char[(mCapacity / 2) * sizeof(T)];
-				memset(new_array, 0, (mCapacity / 2) * sizeof(T));
+				T* new_array = new T[mCapacity / 2];
 
 				// Copy over data from the old array (if any)
-				memcpy(new_array, mData, mSize * sizeof(T));
-				
+				for (unsigned int i = 0; i < mSize; i++)
+					new_array[i] = mData[i];
+
 				// Destroy the old array
 				delete[] mData;
 
