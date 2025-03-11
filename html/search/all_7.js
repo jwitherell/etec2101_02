@@ -1,5 +1,6 @@
 var searchData=
 [
+<<<<<<< Updated upstream
   ['marray_0',['mArray',['../classexample_1_1_person_database.html#a098b0d09ebea53a45dc32ff1443ce5a9',1,'example::PersonDatabase']]],
   ['marraylist_1',['mArrayList',['../classssuds_1_1_array_list_1_1_array_list_iterator.html#a5a0791302942958d971811b834ef6856',1,'ssuds::ArrayList::ArrayListIterator']]],
   ['marraysize_2',['mArraySize',['../classexample_1_1_person_database.html#a204a18327955cce58e9426c5002b7d34',1,'example::PersonDatabase']]],
@@ -15,4 +16,7 @@ var searchData=
   ['msize_12',['mSize',['../classssuds_1_1_array_list.html#a8f68ee08bdbaa2f26d017816e4e46e42',1,'ssuds::ArrayList']]],
   ['msmincapacity_13',['msMinCapacity',['../classssuds_1_1_array_list.html#a5b588e6e70c9a9b5cacbc7ce5b971490',1,'ssuds::ArrayList']]],
   ['mtype_14',['mType',['../classssuds_1_1_array_list_1_1_array_list_iterator.html#a3cdb75fe5ae36d356e522015085661f8',1,'ssuds::ArrayList::ArrayListIterator']]]
+=======
+  ['to_5fstring_0',['to_string',['../classexample_1_1_person_database.html#ad4c45ca3c7c3f83e94f43c0df0cbb55a',1,'example::PersonDatabase']]]
+>>>>>>> Stashed changes
 ];

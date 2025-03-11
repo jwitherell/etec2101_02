@@ -1,0 +1,81 @@
+\doxysection{person.\+h}
+\hypertarget{person_8h_source}{}\label{person_8h_source}\index{include/example/person.h@{include/example/person.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }example}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{comment}{//\ This\ is\ a\ CLASS\ DECLARATION\ -\/-\/\ it\ tells\ the\ compiler\ it\ WILL}}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{comment}{//\ see\ a\ class\ like\ this\ in\ the\ example\ namespace\ (in\ another\ file)}}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{class\ }Foo;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classexample_1_1_person}{Person}}}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classexample_1_1_person_a1ddb0f7b4af376a796a292774c800446}{mFirstName}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classexample_1_1_person_ae59560fb0c802535e086be1c57be6511}{mLastName}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classexample_1_1_person_ac34349cfda9e55dca641c305d395d699}{mID}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classexample_1_1_person_a0ee332c7783fb539a8dc28eb1e1d4567}{mHoursWorked}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classexample_1_1_person_a491e688adc589d8647e748e12302d258}{mHourlyRate}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//@\ CONSTRUCTORS\ /\ OPERATORS\ \ \ \ \ \ \ \ @}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classexample_1_1_person_a13cef9dd175bcc612ae4fca575f91bc5}{Person}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classexample_1_1_person_ab88de04d70f4615a3563ae51ea611af6}{\string~Person}}();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classexample_1_1_person_a13cef9dd175bcc612ae4fca575f91bc5}{Person}}(std::string\ starting\_fname,\ std::string\ starting\_lname,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{float}\ starting\_rate);}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//@\ GETTERS\ /\ SETTERS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ @}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classexample_1_1_person_acc7c6c1c1a81867676b7a9980e7a3dfa}{get\_first\_name}}();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classexample_1_1_person_a5a0b466aa90d254ca9d4e78defc6ffb2}{get\_last\_name}}();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classexample_1_1_person_a413a460a163cd80afe72f1d38d2d8514}{get\_id}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classexample_1_1_person_a65ce00cd0d975eae66c70a3602b461c3}{get\_hours\_worked}}();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classexample_1_1_person_a6c79090eaeddab1ed95bfd351af2d8ee}{get\_rate}}();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classexample_1_1_person_a02cba471db0d286320e823bba4a8072e}{set\_hours\_worked}}(\textcolor{keywordtype}{int}\ new\_hours);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@}}
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//@\ OTHER\ METHODS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ @}}
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ std::string\ \mbox{\hyperlink{classexample_1_1_person_a70ad796cf15d56facb9a1d9786b0fa22}{get\_name}}(\textcolor{keywordtype}{bool}\ reversed\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classexample_1_1_person_a961cb230658aea48972003527410098e}{get\_salary}}(\textcolor{keywordtype}{bool}\ reset\ =\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ pointless\_method(\mbox{\hyperlink{classexample_1_1_foo}{Foo}}\&\ fref);}
+\DoxyCodeLine{00138\ \ \ \ \ \};}
+\DoxyCodeLine{00139\ \}}
+
+\end{DoxyCode}

@@ -1,11 +1,18 @@
 var indexSectionsWithContent =
 {
+<<<<<<< Updated upstream
   0: "abcefgimoprst~",
   1: "afp",
   2: "abcefgioprst~",
   3: "m",
   4: "o",
   5: "s"
+=======
+  0: "afgmprst~",
+  1: "fp",
+  2: "afgprst~",
+  3: "m"
+>>>>>>> Stashed changes
 };
 
 var indexSectionNames =
