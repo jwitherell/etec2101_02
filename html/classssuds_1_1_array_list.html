@@ -117,7 +117,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad351338073d3009c376cc41ebd1a3fa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The move-constructor. This makes a shallow copy of other. A better way to explain might be to say that this constructor "steals" the data from the other array. The compiler calls this method when <a class="el" href="classssuds_1_1_array_list.html" title="An ArrayList is an array-based data structure.">ArrayList</a> other is about to go away, and it is being assigned to us. Making a full copy would be much more expensive than this.  <br /></td></tr>
 <tr class="separator:ad351338073d3009c376cc41ebd1a3fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2054692182bb324c826024ccc10a63b7" id="r_a2054692182bb324c826024ccc10a63b7"><td class="memItemLeft" align="right" valign="top"><a id="a2054692182bb324c826024ccc10a63b7" name="a2054692182bb324c826024ccc10a63b7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ArrayList</b> (std::initializer_list&lt; <a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">T</a> &gt; <a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">ilist</a>)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ArrayList</b> (std::initializer_list&lt; <a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">T</a> &gt; ilist)</td></tr>
 <tr class="memdesc:a2054692182bb324c826024ccc10a63b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializer-list constructor. <br /></td></tr>
 <tr class="separator:a2054692182bb324c826024ccc10a63b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a334e1f8861f34a0da7230aeec7571e3c" id="r_a334e1f8861f34a0da7230aeec7571e3c"><td class="memItemLeft" align="right" valign="top"><a id="a334e1f8861f34a0da7230aeec7571e3c" name="a334e1f8861f34a0da7230aeec7571e3c"></a>
@@ -155,6 +155,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8fb940eeacbdef50b05dac3f2e681ab8" id="r_a8fb940eeacbdef50b05dac3f2e681ab8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8fb940eeacbdef50b05dac3f2e681ab8">output</a> (std::ostream &amp;<a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">os</a>) <a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">const</a></td></tr>
 <tr class="memdesc:a8fb940eeacbdef50b05dac3f2e681ab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">This basically does the same thing as the &lt;&lt; operator (the syntax is a bit different). I chose to keep it to preserve backwards compatiability with &lt;Lab3 code.  <br /></td></tr>
 <tr class="separator:a8fb940eeacbdef50b05dac3f2e681ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ff369eaa7e49b33bcfa80aa88906fcd" id="r_a3ff369eaa7e49b33bcfa80aa88906fcd"><td class="memItemLeft" align="right" valign="top"><a id="a3ff369eaa7e49b33bcfa80aa88906fcd" name="a3ff369eaa7e49b33bcfa80aa88906fcd"></a>
+<a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">void</a>&#160;</td><td class="memItemRight" valign="bottom"><b>prepend</b> (<a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">const</a> <a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">T</a> &amp;<a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">val</a>)</td></tr>
+<tr class="separator:a3ff369eaa7e49b33bcfa80aa88906fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfcec39c654ee0a0d25d033809b1af44" id="r_abfcec39c654ee0a0d25d033809b1af44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classssuds_1_1_array_list_1_1_array_list_iterator.html">ArrayListIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abfcec39c654ee0a0d25d033809b1af44">rbegin</a> () <a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">const</a></td></tr>
 <tr class="memdesc:abfcec39c654ee0a0d25d033809b1af44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a backwards <a class="el" href="classssuds_1_1_array_list_1_1_array_list_iterator.html" title="The job of ArrayListIterator is to traverse the data in an ArrayList. ArrayList wouldn&#39;t necessarily ...">ArrayListIterator</a> "pointing" at the last element (if it exists). If the <a class="el" href="classssuds_1_1_array_list_1_1_array_list_iterator.html" title="The job of ArrayListIterator is to traverse the data in an ArrayList. ArrayList wouldn&#39;t necessarily ...">ArrayListIterator</a> is empty, this iterator will be equal to rend.  <br /></td></tr>
 <tr class="separator:abfcec39c654ee0a0d25d033809b1af44"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -198,8 +201,9 @@ Protected Attributes</h2></td></tr>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>mSize</b></td></tr>
 <tr class="memdesc:a8f68ee08bdbaa2f26d017816e4e46e42"><td class="mdescLeft">&#160;</td><td class="mdescRight">How many slots are we USING? This will always be less than or equal to mCapacity. <br /></td></tr>
 <tr class="separator:a8f68ee08bdbaa2f26d017816e4e46e42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeab51f415e302012806b0d6cdfefc96b" id="r_aeab51f415e302012806b0d6cdfefc96b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">unsigned</a> <a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">char</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeab51f415e302012806b0d6cdfefc96b">mData</a></td></tr>
-<tr class="separator:aeab51f415e302012806b0d6cdfefc96b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43c344eccee75213eb02e96ea3e300e" id="r_ae43c344eccee75213eb02e96ea3e300e"><td class="memItemLeft" align="right" valign="top"><a id="ae43c344eccee75213eb02e96ea3e300e" name="ae43c344eccee75213eb02e96ea3e300e"></a>
+<a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">T</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>mData</b></td></tr>
+<tr class="separator:ae43c344eccee75213eb02e96ea3e300e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
@@ -961,32 +965,6 @@ template&lt;<a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">class</a> <a
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the (possibly modified) os that was given to us</dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="aeab51f415e302012806b0d6cdfefc96b" name="aeab51f415e302012806b0d6cdfefc96b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeab51f415e302012806b0d6cdfefc96b">&#9670;&#160;</a></span>mData</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">class</a> <a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">T</a> &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">unsigned</a> <a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">char</a>* <a class="el" href="classssuds_1_1_array_list.html">ssuds::ArrayList</a>&lt; <a class="el" href="#a8f68ee08bdbaa2f26d017816e4e46e42">T</a> &gt;::mData</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>The array of data we're currently holding. Note: an alternative would've been T* mData but I'm attempting to use raw bytes here so we don't have to have a default constructor for templated types. </p>
 
 </div>
 </div>
