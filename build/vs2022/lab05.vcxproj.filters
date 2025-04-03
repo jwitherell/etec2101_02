@@ -15,18 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\ssuds\ssuds_unit_tests_main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\ssuds\array_list_tests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\ssuds\array_list_utility_tests.cpp">
+    <ClCompile Include="..\..\src\lab05_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\ssuds\array_list.h">
+    <ClInclude Include="..\..\include\ssuds\array_list_utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
